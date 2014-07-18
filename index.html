@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Cortana Demo</title>
+	<!-- <link href="css/horde.css" rel="stylesheet"> -->
+</head>
+<body>
+
+	<div id="stage"></div>
+
+	<script src="js/core.js"></script>
+	<script src="js/engine.js"></script>
+	<script src="js/entity.js"></script>
+
+	<script>
+		(function () {
+			var e = new cortana.Engine();
+
+			var player = new cortana.Entity();
+			e.addEntity(player);
+
+			var thing1 = new cortana.Entity({
+				name: 'hero'
+			});
+			e.addEntity(thing1);
+
+			console.log(player);
+			console.log(thing1);
+
+
+			e.run();
+		}());
+	</script>
+
+</body>
+</html>
