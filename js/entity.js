@@ -9,13 +9,22 @@ this.cortana = this.cortana || {};
 		this.id = null;
 		this.type = _args.type || null;
 		this.name = _args.name || null;
+		this.state = null;
+		this.dirty = false;
 	};
 
-	var c = Entity.prototype;
+	Entity.prototype = {
 
-	c.say = function say(text) {
-		console.log(text);
-	};
+		constructor: Entity,
+
+		say: function(text) {
+			console.log(text);
+		},
+
+		update: function(delta) {
+
+		}
+	}
 
 	cortana.Entity = Entity;
 }());
