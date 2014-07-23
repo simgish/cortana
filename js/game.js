@@ -21,7 +21,9 @@ this.Cortana = this.Cortana || {};
 
 		this.isLoaded = false;
 
-		// return this;
+		this.init();
+
+		return this;
 	};
 
 	Game.prototype = {
@@ -29,31 +31,8 @@ this.Cortana = this.Cortana || {};
 		init: function() {
 			this.isLoaded = true;
 			this.render = new Cortana.Render();
-
+			this.add = new Cortana.EntityPool().add;
 			this.render.start();
-		},
-
-		addEntity: function(entity) {
-			var next_index  = this.entities.length + 1;
-			entity.id = next_index;
-
-			var ent_id = this.entities.push(entity);
-			this.entities.indexOf(entity);
-
-			return this.entities.indexOf(entity);
-		},
-
-		cleanupEntities: function() {
-			for (var i = 0, len = this.entities.length; i < len; i++) {
-				if (this.entities[i].dirty) {
-					this.entities.splice(i--, 1);
-				}
-			}
-			return this.entities;
-		},
-
-		getEntities: function() {
-			return this.entities;
 		},
 
 		update: function(dt) {
@@ -62,6 +41,6 @@ this.Cortana = this.Cortana || {};
 	};
 
 	Game.prototype.constructor = Game;
-	
+
 	Cortana.Game = Game;
 }());

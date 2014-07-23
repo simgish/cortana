@@ -4,19 +4,10 @@ this.Cortana = this.Cortana || {};
 	'use strict';
 
 	var Render = function() {
-		if (!window.requestAnimationFrame) {
-			window.mozRequestAnimationFrame || 
-			window.oRequestAnimationFrame || 
-			window.msRequestAnimationFrame || 
-			function(callback, element) {
-				window.setTimeout(callback, 1000 / 60);
-			}
-		}
+		
 	};
 
 	Render.prototype = {
-		constructor: Render,
-
 		start: function() {
 			var self = this;
 
@@ -34,10 +25,11 @@ this.Cortana = this.Cortana || {};
 		},
 
 		update: function(dt) {
-			console.log(dt);
+			// console.log(dt);
 			this.frameId = requestAnimationFrame(this.loop);
 		}
 	}
 
-Cortana.Render = Render;
+	Render.prototype.constructor = Render;
+	Cortana.Render = Render;
 }());

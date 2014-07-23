@@ -1,9 +1,10 @@
-this.cortana = this.cortana || {};
+this.Cortana = this.Cortana || {};
 
 (function() {
 	'use strict';
 
 	var Entity = function(args) {
+		console.log(args);
 		var _args = args || {};
 
 		this.id = null;
@@ -14,9 +15,6 @@ this.cortana = this.cortana || {};
 	};
 
 	Entity.prototype = {
-
-		constructor: Entity,
-
 		say: function(text) {
 			console.log(text);
 		},
@@ -26,5 +24,6 @@ this.cortana = this.cortana || {};
 		}
 	}
 
-	cortana.Entity = Entity;
+	Entity.prototype.constructor = Entity;
+	Cortana.Entity = Entity;
 }());

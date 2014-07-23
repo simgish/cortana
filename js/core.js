@@ -1,4 +1,0 @@
-var cortana = {
-	VERSION: '0.0.1'
-};
-
