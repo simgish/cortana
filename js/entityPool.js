@@ -1,9 +1,8 @@
-this.Cortana = this.Cortana || {};
-
-(function() {
+(function(Cortana) {
 	'use strict';
 	
-	var EntityPool = function() {
+	var EntityPool = function(game) {
+		this.game = game;
 		this.entities = [];
 	};
 
@@ -36,4 +35,4 @@ this.Cortana = this.Cortana || {};
 
 	EntityPool.prototype.constructor = EntityPool;
 	Cortana.EntityPool = EntityPool;
-}());
+}(Cortana));

@@ -28,10 +28,13 @@ this.Cortana = this.Cortana || {};
 
 	Game.prototype = {
 
-		init: function() {
+		init: function(context, width, height) {
+			this.context = context;
+			this.width = width;
+			this.height = height;
 			this.isLoaded = true;
-			this.render = new Cortana.Render();
-			this.add = new Cortana.EntityPool().add;
+			this.render = new Cortana.Render(this);
+			this.add = new Cortana.EntityPool(this).add;
 			this.render.start();
 		},
 

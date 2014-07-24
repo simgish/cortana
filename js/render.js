@@ -1,9 +1,7 @@
-this.Cortana = this.Cortana || {};
-
-(function() {
+(function(game) {
 	'use strict';
 
-	var Render = function() {
+	var Render = function(game) {
 		
 	};
 
@@ -31,5 +29,5 @@ this.Cortana = this.Cortana || {};
 	}
 
 	Render.prototype.constructor = Render;
-	Cortana.Render = Render;
-}());
+	game.Render = Render;
+}(Cortana));

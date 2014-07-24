@@ -1,3 +1,3 @@
-ExampleGame = new Cortana.Game('#stage');
-console.log(ExampleGame);
+g = new Cortana.Game('#stage');
+console.log(g);
 // ExampleGame.init();
