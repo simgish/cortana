@@ -34,7 +34,7 @@ this.Cortana = this.Cortana || {};
 			this.height = height;
 			this.isLoaded = true;
 			this.render = new Cortana.Render(this);
-			this.add = new Cortana.EntityPool(this).add;
+			this.add = new Cortana.EntityManager(this).add;
 			this.render.start();
 		},
 
