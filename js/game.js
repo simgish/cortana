@@ -15,11 +15,10 @@
 		this.entities = [];
 		this.add = null;
 
+		this.timer = null;
 		this.render = null;
 
 		this.isLoaded = false;
-
-		// this.init();
 
 		return this;
 	};
@@ -31,9 +30,10 @@
 			this.width = width;
 			this.height = height;
 			this.isLoaded = true;
+			this.timer = new Cortana.Timer(this);
 			this.render = new Cortana.Render(this);
 			this.add = new Cortana.EntityManager(this).add;
-			this.render.start();
+			this.timer.start();
 		},
 
 		update: function(dt) {
