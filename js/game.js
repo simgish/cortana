@@ -1,6 +1,4 @@
-this.Cortana = this.Cortana || {};
-
-(function() {
+(function(Cortana) {
 	'use strict';
 
 	var Game = function(context, width, height) {
@@ -21,7 +19,7 @@ this.Cortana = this.Cortana || {};
 
 		this.isLoaded = false;
 
-		this.init();
+		// this.init();
 
 		return this;
 	};
@@ -44,6 +42,5 @@ this.Cortana = this.Cortana || {};
 	};
 
 	Game.prototype.constructor = Game;
-
 	Cortana.Game = Game;
-}());
+}(Cortana));
