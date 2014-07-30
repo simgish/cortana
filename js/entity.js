@@ -12,12 +12,15 @@
 		this.y = _args.y || 0;
 		this.state = null;
 		this.dirty = false;
+
+		return this;
 	};
 
 	Entity.prototype = {
 
 		init: function(x, y) {
 			console.log('init at ' + x + y);
+
 		},
 
 		draw: function(x, y) {
@@ -28,7 +31,7 @@
 			console.log(text);
 		},
 
-		update: function(delta) {
+		update: function(dt) {
 
 		}
 	}

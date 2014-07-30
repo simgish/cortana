@@ -27,10 +27,12 @@
 	<script>
 		document.getElementById('resume').addEventListener('click', function() {
 			g.isPaused = false;
+			g.reset();
 		});
 
 		document.getElementById('pause').addEventListener('click', function() {
 			g.isPaused = true;
+			g.reset();
 		});
 
 	</script>

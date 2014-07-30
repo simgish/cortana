@@ -31,6 +31,10 @@
 
 		resume: function() {
 			this.game.isPaused = false;
+			this.reset();
+		},
+
+		reset: function() {	
 		},
 
 		update: function(dt) {

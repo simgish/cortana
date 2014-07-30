@@ -36,8 +36,11 @@
 			this.timer.start();
 		},
 
+		reset: function() {
+		},
+
 		update: function(dt) {
-			console.log(dt);
+			// console.log(dt);
 		}
 	};
 
