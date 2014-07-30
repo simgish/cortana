@@ -25,8 +25,18 @@
 			
 		},
 
+		pause: function() {
+			this.game.isPaused = true;
+		},
+
+		resume: function() {
+			this.game.isPaused = false;
+		},
+
 		update: function(dt) {
-			this.game.update(dt);
+			if (!this.game.isPaused) {
+				this.game.update(dt);
+			}
 
 			this.frameId = requestAnimationFrame(this.loop);
 		}
