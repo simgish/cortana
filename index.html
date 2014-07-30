@@ -18,7 +18,21 @@
 	<script src="example.js"></script>
 
 	<script>
-		// window.addEventListener('load', ExampleGame);
+		window.addEventListener('load', g.init());
+	</script>
+
+	<input id="resume" type="button" value="Resume" />
+	<input id="pause" type="button" value="Pause" />
+
+	<script>
+		document.getElementById('resume').addEventListener('click', function() {
+			g.isPaused = false;
+		});
+
+		document.getElementById('pause').addEventListener('click', function() {
+			g.isPaused = true;
+		});
+
 	</script>
 
 </body>
