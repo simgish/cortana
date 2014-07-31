@@ -41,6 +41,9 @@
 
 		update: function(dt) {
 			// console.log(dt);
+			for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
+				this.entities[e].update(dt);
+			}
 		}
 	};
 
