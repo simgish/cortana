@@ -19,6 +19,7 @@
 		this.render = null;
 
 		this.isLoaded = false;
+		this.debug = true;
 
 		return this;
 	};
