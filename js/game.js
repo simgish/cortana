@@ -31,6 +31,7 @@
 			this.width = width;
 			this.height = height;
 			this.isLoaded = true;
+			this.input = new Cortana.Input(this);
 			this.timer = new Cortana.Timer(this);
 			this.render = new Cortana.Render(this);
 			this.add = new Cortana.EntityManager(this).add;
@@ -42,6 +43,8 @@
 
 		update: function(dt) {
 			// console.log(dt);
+			this.input.update(dt);
+			
 			for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
 				this.entities[e].update(dt);
 			}

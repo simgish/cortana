@@ -9,27 +9,17 @@
 		SPACE: 32
 	};
 
-	var Input = function(game, keycode) {
+	var Input = function(game) {
 		this.game = game;
+		this.keys = [];
 	};
 
 	Input.prototype = {
 
-		init: function(x, y) {
-			console.log('init at ' + x + y);
-
-		},
-
-		draw: function(x, y) {
-
-		},
-
-		say: function(text) {
-			console.log(text);
+		init: function() {
 		},
 
 		update: function(dt) {
-			// console.log(this.name);
 		}
 	}
 
