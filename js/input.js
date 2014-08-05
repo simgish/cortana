@@ -12,14 +12,22 @@
 	var Input = function(game) {
 		this.game = game;
 		this.keys = [];
+
+		this._keyDown = null;
+
+		this.init();
 	};
 
 	Input.prototype = {
 
 		init: function() {
+			window.addEventListener('keydown', this._keyDown);
 		},
 
 		update: function(dt) {
+		},
+
+		_keyDown: function(key) {
 		}
 	}
 
