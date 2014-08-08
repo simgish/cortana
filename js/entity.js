@@ -2,7 +2,6 @@
 	'use strict';
 
 	var Entity = function(args) {
-		console.log(args);
 		var _args = args || {};
 
 		this.id = null;
@@ -32,7 +31,7 @@
 		},
 
 		update: function(dt) {
-			// console.log(this.name);
+			console.log(this.name);
 		}
 	}
 
