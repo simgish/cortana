@@ -21,6 +21,8 @@
 		this.isLoaded = false;
 		this.debug = true;
 
+		this.init();
+
 		return this;
 	};
 

@@ -31,7 +31,7 @@
 		},
 
 		update: function(dt) {
-			console.log(this.name);
+			// console.log(this.name);
 		}
 	}
 
