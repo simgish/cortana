@@ -21,13 +21,20 @@
 	Input.prototype = {
 
 		init: function() {
-			window.addEventListener('keydown', this._keyDown);
+			window.addEventListener('keydown', this.keyDown);
+			window.addEventListener('keyup', this.keyUp);
 		},
 
 		update: function(dt) {
 		},
 
-		_keyDown: function(key) {
+		keyDown: function(event) {
+			event.stopPropagation();
+			event.preventDefault();
+		},
+
+		keyUp: function(event) {
+			
 		}
 	}
 
