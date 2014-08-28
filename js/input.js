@@ -10,10 +10,8 @@
 	};
 
 	var Input = function(game) {
-		this.game = game;
-		this.keys = [];
-
-		this._keyDown = null;
+		this.keys = {};
+		this.bindings = {};
 
 		this.init();
 	};
@@ -21,20 +19,31 @@
 	Input.prototype = {
 
 		init: function() {
-			window.addEventListener('keydown', this.keyDown);
-			window.addEventListener('keyup', this.keyUp);
+			window.addEventListener('keydown', this.keyDown.bind(this), false);
+			window.addEventListener('keyup', this.keyUp.bind(this), false);
 		},
 
 		update: function(dt) {
+			// console.log(this.bindings)
+		},
+
+		bind: function(key, action) {
+			this.bindings[key] = action;
 		},
 
 		keyDown: function(event) {
+			var action = this.bindings[event.keyCode];
+			
+			
 			event.stopPropagation();
 			event.preventDefault();
 		},
 
 		keyUp: function(event) {
-			
+			var action = Cortana.KEY[event.keyCode];
+			this.keys[action] = event;
+
+
 		}
 	}
 

@@ -15,6 +15,7 @@
 		this.entities = [];
 		this.add = null;
 
+		this.input = null;
 		this.timer = null;
 		this.render = null;
 
@@ -22,8 +23,6 @@
 		this.debug = true;
 
 		this.init();
-
-		return this;
 	};
 
 	Game.prototype = {
