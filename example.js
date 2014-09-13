@@ -12,6 +12,9 @@ g.add(Cortana.Entity({
 	name: 'enemy'
 }));
 
+// g.input.keyDown(function(event) {
+// 	console.log(event);
+// });
 // var canvas = document.getElementById('stage');
 // canvas.width = 800;
 // canvas.height = 600;

@@ -2,16 +2,15 @@
 	'use strict';
 
 	Cortana.KEY = {
-		UP: 38,
-		DOWN: 40,
-		LEFT: 37,
-		RIGHT: 39,
-		SPACE: 32
+		38: 'up',
+		40: 'down',
+		37: 'left',
+		39: 'right',
+		32: 'space'
 	};
 
 	var Input = function(game) {
-		this.keys = {};
-		this.bindings = {};
+		this.pressed = {};
 
 		this.init();
 	};
@@ -19,31 +18,16 @@
 	Input.prototype = {
 
 		init: function() {
-			window.addEventListener('keydown', this.keyDown.bind(this), false);
-			window.addEventListener('keyup', this.keyUp.bind(this), false);
+			addEventListener('keydown', this.handler.bind(this));
+			addEventListener('keyup', this.handler.bind(this));
 		},
 
-		update: function(dt) {
-			// console.log(this.bindings)
-		},
-
-		bind: function(key, action) {
-			this.bindings[key] = action;
-		},
-
-		keyDown: function(event) {
-			var action = this.bindings[event.keyCode];
-			
-			
-			event.stopPropagation();
-			event.preventDefault();
-		},
-
-		keyUp: function(event) {
-			var action = Cortana.KEY[event.keyCode];
-			this.keys[action] = event;
-
-
+		handler: function(event) {
+			if (Cortana.KEY.hasOwnProperty(event.keyCode)) {
+				var down = event.type == 'keydown';
+				this.pressed[Cortana.KEY[event.keyCode]] = down;
+				event.preventDefault();
+			}
 		}
 	}
 

@@ -45,7 +45,7 @@
 		},
 
 		update: function(dt) {
-			this.input.update(dt);
+			// this.input.update(dt);
 
 			// Update each entity
 			for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
