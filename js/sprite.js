@@ -1,30 +1,29 @@
 (function(Cortana) {
 	'use strict';
 
-	var Sprite = function(options) {
+	var Sprite = function(imgPath, width, height) {
 		this.image;
-		this.imgPath = options.imgPath;
-		this.width = options.width;
-		this.height = options.height;
+		this.imgPath = imgPath;
+		this.width = width;
+		this.height = height;
 		this.pos = {x: 0, y: 0};
-
-		this.init(options);
-		return this;
+		this.init();
+		// return this;
 	};
 
 	Sprite.prototype = {
 
-		init: function(options) {
+		init: function() {
 			this.image = new Image();
-			this.image.src = options.imgPath;
-			this.image.width = options.width;
-			this.image.height = options.height;
-			this.pos.x = options.x;
-			this.pos.y = options.y;
+			this.image.src = this.imgPath;
+			this.image.width = this.width;
+			this.image.height = this.height;
+			this.pos.x = this.pos.x;
+			this.pos.y = this.pos.y;
 		},
 
-		render: function(c) {
-			var context =  c.getContext("2d");
+		render: function() {
+			var context = document.getElementById(Cortana.context).getContext('2d');
 
 			context.drawImage(
 				this.image,

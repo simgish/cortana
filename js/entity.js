@@ -11,14 +11,22 @@
 		this.size = {width: 0, height: 0};
 		this.state = null;
 		this.dirty = false;
+		this.sprite = null;
 
-		return this;
+		// this.init(pos);
+
+		// return this;
 	};
 
 	Entity.prototype = {
 
-		init: function(x, y) {
+		init: function(pos) {
 			console.log('init at ' + x + y);
+
+		},
+
+		addSprite: function(src) {
+			this.sprite = new Cortana.Sprite(src, 256, 256);
 		},
 
 		draw: function(x, y) {

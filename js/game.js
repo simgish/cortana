@@ -4,9 +4,9 @@
 	var Game = function(context, width, height) {
 		var self = this;
 		this.config = null;
-		this.context = '';
-		this.width = 800;
-		this.height = 600;
+		this.context = context;
+		this.width = width;
+		this.height = height;
 		this.isRunning = false;
 		this.isPaused = false;
 		this.time = 0;
@@ -23,14 +23,16 @@
 		this.debug = true;
 
 		this.init();
+		return this;
 	};
 
 	Game.prototype = {
 
-		init: function(stage, width, height) {
-			this.context = document.getElementById(stage).getContext('2d');
-			this.width = width;
-			this.height = height;
+		init: function() {
+			Cortana.context = this.context;
+			this.context = document.getElementById(Cortana.context).getContext('2d');
+			this.context.width = this.width;
+			this.context.height = this.height;
 			this.isLoaded = true;
 			this.input = new Cortana.Input(this);
 			this.timer = new Cortana.Timer(this);

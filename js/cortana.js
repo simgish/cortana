@@ -1,4 +1,6 @@
-var Cortana = {};
+var Cortana = {
+	context: null
+};
 
 window.requestAnimationFrame = 
 			window.requestAnimationFrame ||
