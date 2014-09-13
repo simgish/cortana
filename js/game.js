@@ -27,8 +27,8 @@
 
 	Game.prototype = {
 
-		init: function(context, width, height) {
-			this.context = context;
+		init: function(stage, width, height) {
+			this.context = document.getElementById(stage).getContext('2d');
 			this.width = width;
 			this.height = height;
 			this.isLoaded = true;
