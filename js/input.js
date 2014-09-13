@@ -10,7 +10,13 @@
 	};
 
 	var Input = function(game) {
-		this.pressed = {};
+		this.pressed = {
+			up: false,
+			down: false,
+			left: false,
+			right: false,
+			space: false
+		};
 
 		this.init();
 	};

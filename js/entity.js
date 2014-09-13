@@ -2,20 +2,17 @@
 	'use strict';
 
 	var Entity = function(args) {
-		var _args = args || {};
-
+		this.config = args || {};
 		this.id = null;
-		this.type = _args.type || null;
-		this.name = _args.name || null;
+		this.type = this.config.type || null;
+		this.name = this.config.name || null;
 		this.pos = {x: 0, y: 0};
 		this.size = {width: 0, height: 0};
 		this.state = null;
 		this.dirty = false;
 		this.sprite = null;
 
-		// this.init(pos);
-
-		// return this;
+		this.update = this.config.update;
 	};
 
 	Entity.prototype = {
@@ -38,7 +35,7 @@
 		},
 
 		update: function(dt) {
-			// console.log(this.name);
+			this.update(dt);
 		}
 	}
 
