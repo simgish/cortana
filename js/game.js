@@ -30,17 +30,19 @@
 
 		init: function() {
 			var c = document.getElementById(this.canvas);
-			c.style.width = this.width + 'px';
-			c.style.height = this.height + 'px';
+			c.setAttribute('width', this.width + 'px');
+			c.setAttribute('height', this.height + 'px');
 
 			Cortana.canvas = this.canvas;
 			this.context = document.getElementById(Cortana.canvas).getContext('2d');
 
+			Cortana.width = this.width;
+			Cortana.height = this.height;
+
 			// translate context to center of canvas
       		// this.context.translate(c.width / 2, c.height / 2);
 
-     		// scale y component
-    		this.context.scale(0.6, 0.54);
+    		// this.context.scale(0.6, 0.50);
 
     		this.input = new Cortana.Input(this);
     		this.timer = new Cortana.Timer(this);

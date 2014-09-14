@@ -36,7 +36,8 @@
 				posX,
 				posY,
 				this.width,
-				this.height);
+				this.height
+			);
 		}
 
 	}
