@@ -6,20 +6,21 @@
 		this.id = null;
 		this.type = this.config.type || null;
 		this.name = this.config.name || null;
-		this.pos = {x: 0, y: 0};
+		this.pos = {x: this.config.pos.x, y: this.config.pos.y};
 		this.size = {width: 0, height: 0};
 		this.state = null;
 		this.dirty = false;
-		this.sprite = null;
-
+		this.sprite = this.config.sprite;
 		this.update = this.config.update;
+		this.init = this.config.init;
+
+		this.init();
 	};
 
 	Entity.prototype = {
 
 		init: function(pos) {
 			console.log('init at ' + x + y);
-
 		},
 
 		addSprite: function(src) {

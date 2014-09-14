@@ -2,42 +2,33 @@ g = new Cortana.Game('stage', 800, 600);
 
 var player = new Cortana.Entity({
 	name: 'player',
+	pos: {x: 140, y: 65},
+	sprite: null,
+	
+	init: function() {
+		this.sprite = new Cortana.Sprite('/images/enemy.png', 256, 256, this.pos.x, this.pos.y);
+	},
 	
 	update: function(dt) {
-		// console.log(dt);
-		// console.log('player update function');
 
 		if (g.input.pressed.up) {
-			console.log('up pressed');
+			this.pos.y -= 1;
 		}
 
 		if (g.input.pressed.down) {
-			console.log('down pressed');
+			this.pos.y += 1;
 		}
 
 		if (g.input.pressed.left) {
-			console.log('left pressed');
+			this.pos.x -= 1;
 		}
 
 		if (g.input.pressed.right) {
-			console.log('right pressed');
+			this.pos.x += 1;
 		}
+
+		this.sprite.draw(this.pos.x, this.pos.y);
 	}
 });
 
 g.add(player);
-
-// g.add(Cortana.Entity({
-// 	name: 'enemy'
-// }));
-
-
-// var canvas = document.getElementById('stage');
-// canvas.width = 800;
-// canvas.height = 600;
-
-// var coin = new Cortana.Sprite({imgPath:'/images/coin.png', height: 256, width: 256});
-
-// coin.render(canvas);
-
-// g.init();
