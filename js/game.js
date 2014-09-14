@@ -1,10 +1,10 @@
 (function(Cortana) {
 	'use strict';
 
-	var Game = function(context, width, height) {
+	var Game = function(canvas, width, height) {
 		var self = this;
 		this.config = null;
-		this.context = context;
+		this.canvas = canvas;
 		this.width = width;
 		this.height = height;
 		this.isRunning = false;
@@ -29,31 +29,48 @@
 	Game.prototype = {
 
 		init: function() {
-			Cortana.context = this.context;
-			this.context = document.getElementById(Cortana.context).getContext('2d');
-			this.context.width = this.width;
-			this.context.height = this.height;
-			this.isLoaded = true;
-			this.input = new Cortana.Input(this);
-			this.timer = new Cortana.Timer(this);
-			this.render = new Cortana.Render(this);
-			this.add = new Cortana.EntityManager(this).add;
-			this.timer.start();
-		},
+			var c = document.getElementById(this.canvas);
+			c.style.width = this.width + 'px';
+			c.style.height = this.height + 'px';
 
-		reset: function() {
-		},
+			Cortana.canvas = this.canvas;
+			this.context = document.getElementById(Cortana.canvas).getContext('2d');
 
-		update: function(dt) {
-			// this.input.update(dt);
+			// translate context to center of canvas
+      // this.context.translate(c.width / 2, c.height / 2);
 
-			// Update each entity
-			for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
-				this.entities[e].update(dt);
-			}
-		}
-	};
+      // scale y component
+      // this.context.scale(0.5, 0.5);
 
-	Game.prototype.constructor = Game;
-	Cortana.Game = Game;
+      this.input = new Cortana.Input(this);
+      this.timer = new Cortana.Timer(this);
+      this.render = new Cortana.Render(this);
+      this.add = new Cortana.EntityManager(this).add;
+
+      this.isLoaded = true;
+  },
+
+  start: function() {
+  	this.timer.start();
+  },
+
+  reset: function() {
+  },
+
+  update: function(dt) {
+	// Clear canvas
+	var canvas = document.getElementById(Cortana.canvas);
+	var context = document.getElementById(Cortana.canvas).getContext('2d');
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	// Update entities
+	for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
+		this.entities[e].update(dt);
+	}
+
+}
+};
+
+Game.prototype.constructor = Game;
+Cortana.Game = Game;
 }(Cortana));

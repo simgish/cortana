@@ -23,20 +23,11 @@
 			console.log('init at ' + x + y);
 		},
 
-		addSprite: function(src) {
-			this.sprite = new Cortana.Sprite(src, 256, 256);
-		},
-
 		draw: function(x, y) {
 
 		},
 
-		say: function(text) {
-			console.log(text);
-		},
-
 		update: function(dt) {
-			this.update(dt);
 		}
 	}
 

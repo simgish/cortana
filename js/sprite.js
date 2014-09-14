@@ -24,13 +24,8 @@
 		},
 
 		draw: function(posX, posY) {
-			var canvas = document.getElementById(Cortana.context);
-			var context = document.getElementById(Cortana.context).getContext('2d');
-
-			context.save();
-			context.setTransform(1, 0, 0, 1, 0, 0);
-			context.clearRect(0, 0, canvas.width, canvas.height);
-			context.restore();
+			var canvas = document.getElementById(Cortana.canvas);
+			var context = canvas.getContext('2d');
 
 			context.drawImage(
 				this.image,

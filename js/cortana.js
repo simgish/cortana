@@ -1,4 +1,5 @@
 var Cortana = {
+	canvas: null,
 	context: null
 };
 
