@@ -6,7 +6,7 @@ var bg = new Cortana.Entity({
 	sprite: null,
 
 	init: function() {
-		this.sprite = new Cortana.Sprite('/images/bg.png', 500, 280, this.pos.x, this.pos.y);
+		this.sprite = new Cortana.Sprite('/images/bg.png', 500, 281, this.pos.x, this.pos.y);
 	},
 
 	update: function(dt) {

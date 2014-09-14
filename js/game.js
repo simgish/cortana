@@ -24,7 +24,7 @@
 
 		this.init();
 		return this;
-	};
+	}
 
 	Game.prototype = {
 
@@ -37,40 +37,48 @@
 			this.context = document.getElementById(Cortana.canvas).getContext('2d');
 
 			// translate context to center of canvas
-      // this.context.translate(c.width / 2, c.height / 2);
+      		// this.context.translate(c.width / 2, c.height / 2);
 
-      // scale y component
-      // this.context.scale(0.5, 0.5);
+     		// scale y component
+    		this.context.scale(0.6, 0.54);
 
-      this.input = new Cortana.Input(this);
-      this.timer = new Cortana.Timer(this);
-      this.render = new Cortana.Render(this);
-      this.add = new Cortana.EntityManager(this).add;
+    		this.input = new Cortana.Input(this);
+    		this.timer = new Cortana.Timer(this);
+    		this.render = new Cortana.Render(this);
+    		this.add = new Cortana.EntityManager(this).add;
 
-      this.isLoaded = true;
-  },
+    		this.isLoaded = true;
+    	},
 
-  start: function() {
-  	this.timer.start();
-  },
+    	start: function() {
+    		this.timer.start();
+    	},
 
-  reset: function() {
-  },
+    	reset: function() {
+    	},
 
-  update: function(dt) {
-	// Clear canvas
-	var canvas = document.getElementById(Cortana.canvas);
-	var context = document.getElementById(Cortana.canvas).getContext('2d');
-	context.clearRect(0, 0, canvas.width, canvas.height);
+    	update: function(dt) {
 
-	// Update entities
-	for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
-		this.entities[e].update(dt);
+			// Clear canvas
+			var canvas = document.getElementById(Cortana.canvas);
+			var context = document.getElementById(Cortana.canvas).getContext('2d');
+
+			context.save();
+
+			// Use the identity matrix while clearing the canvas
+			context.setTransform(1, 0, 0, 1, 0, 0);
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			// Restore the transform
+			context.restore();
+
+			// Update entities
+			for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
+				this.entities[e].update(dt);
+			}
+		}
 	}
 
-}
-};
-
-Game.prototype.constructor = Game;
-Cortana.Game = Game;
+	Game.prototype.constructor = Game;
+	Cortana.Game = Game;
 }(Cortana));
