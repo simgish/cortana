@@ -27,7 +27,11 @@
 			var canvas = document.getElementById(Cortana.context);
 			var context = document.getElementById(Cortana.context).getContext('2d');
 
+			context.save();
+			context.setTransform(1, 0, 0, 1, 0, 0);
 			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.restore();
+
 			context.drawImage(
 				this.image,
 				0,
