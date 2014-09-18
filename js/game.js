@@ -39,11 +39,6 @@
 			Cortana.width = this.width;
 			Cortana.height = this.height;
 
-			// translate context to center of canvas
-      		// this.context.translate(c.width / 2, c.height / 2);
-
-    		// this.context.scale(0.6, 0.50);
-
     		this.input = new Cortana.Input(this);
     		this.timer = new Cortana.Timer(this);
     		this.render = new Cortana.Render(this);
