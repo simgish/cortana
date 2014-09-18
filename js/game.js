@@ -39,22 +39,22 @@
 			Cortana.width = this.width;
 			Cortana.height = this.height;
 
-    		this.input = new Cortana.Input(this);
-    		this.timer = new Cortana.Timer(this);
-    		this.render = new Cortana.Render(this);
-    		this.add = new Cortana.EntityManager(this).add;
+			this.input = new Cortana.Input(this);
+			this.timer = new Cortana.Timer(this);
+			this.render = new Cortana.Render(this);
+			this.add = new Cortana.EntityManager(this).add;
 
-    		this.isLoaded = true;
-    	},
+			this.isLoaded = true;
+		},
 
-    	start: function() {
-    		this.timer.start();
-    	},
+		start: function() {
+			this.timer.start();
+		},
 
-    	reset: function() {
-    	},
+		reset: function() {
+		},
 
-    	update: function(dt) {
+		update: function(dt) {
 
 			// Clear canvas
 			var canvas = document.getElementById(Cortana.canvas);
@@ -70,9 +70,33 @@
 			context.restore();
 
 			// Update entities
-			for (var e = 0, elen = this.entities.length; e < elen; e += 1) {
+			for (var e = 0, elen = this.entities.length; e < elen; e++) {
 				this.entities[e].update(dt);
 			}
+
+			this.checkEntities();
+		},
+
+		checkEntities: function() {
+			for (var e = 0, elen = this.entities.length; e < elen; e++) {
+				var thisEntity = this.getEntityById(e);
+
+				if (!thisEntity.canCollide) continue;
+
+				for (var o = e + 1; o < elen; o++) {
+					var thatEntity = this.getEntityById(o);
+
+					if (!thatEntity.canCollide) continue;
+
+					if (thisEntity.touches(thatEntity)) {
+						console.log('collision');
+					}
+				}
+			}
+		},
+
+		getEntityById: function(id) {
+			return this.entities[id];
 		}
 	}
 
