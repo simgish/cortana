@@ -66,7 +66,7 @@ game.add(coin);
 game.add(player);
 
 function update() {
-	console.log(player.pos);
+	
 }
 
 game.addScene(update);
