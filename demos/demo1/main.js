@@ -66,7 +66,7 @@ game.add(coin);
 game.add(player);
 
 function update() {
-	var p = game.getEntityById(2);
+	console.log(player.pos);
 }
 
 game.addScene(update);
