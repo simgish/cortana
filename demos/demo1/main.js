@@ -4,6 +4,7 @@ var bg = new Cortana.Entity({
 	name: 'bg',
 	pos: {x: 0, y: 0},
 	sprite: null,
+	vel: 1.0,
 
 	init: function() {
 		this.sprite = new Cortana.Sprite('../images/citybg2.png', 500, 281, this.pos.x, this.pos.y);
@@ -65,7 +66,15 @@ game.add(bg);
 game.add(coin);
 game.add(player);
 
-function update() {
+var lastTime = 0;
+
+function update(dt) {
+	var t = dt - lastTime;
+
+	if (t > bg.vel) {
+		bg.pos.x -= bg.vel;
+		lastTime = dt;
+	}
 }
 
 game.addScene(update);

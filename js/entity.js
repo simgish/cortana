@@ -8,6 +8,7 @@
 		this.name = this.config.name || null;
 		this.pos = {x: this.config.pos.x, y: this.config.pos.y};
 		this.size = {width: 0, height: 0};
+		this.vel = this.config.vel || 0;
 		this.state = null;
 		this.dirty = false;
 		this.canCollide = this.config.canCollide || false;
