@@ -19,7 +19,7 @@
 		};
 
 		this.init();
-	};
+	}
 
 	Input.prototype = {
 

@@ -13,7 +13,6 @@
 		this.frameId = null;
 
 		this.entities = [];
-		this.add = null;
 
 		this.input = null;
 		this.timer = null;
@@ -21,6 +20,8 @@
 
 		this.isLoaded = false;
 		this.debug = true;
+
+		this.scenes = [];
 
 		this.init();
 		return this;
@@ -42,7 +43,6 @@
 			this.input = new Cortana.Input(this);
 			this.timer = new Cortana.Timer(this);
 			this.render = new Cortana.Render(this);
-			this.add = new Cortana.EntityManager(this).add;
 
 			this.isLoaded = true;
 		},
@@ -71,10 +71,25 @@
 
 			// Update entities
 			for (var e = 0, elen = this.entities.length; e < elen; e++) {
-				this.entities[e].update(dt);
+				this.entities[e].update();
 			}
 
 			this.checkEntities();
+
+			for (var s = 0, slen = this.scenes.length; s < slen; s++) {
+				this.scenes[s]();
+			}
+		},
+
+		add: function(entity) {
+			// var entity = new Cortana.Entity(e);
+			var next_index  = this.entities.length + 1;
+			entity.id = next_index;
+
+			var ent_id = this.entities.push(entity);
+			this.entities.indexOf(entity);
+
+			return this.entities.indexOf(entity);
 		},
 
 		checkEntities: function() {
@@ -97,7 +112,12 @@
 
 		getEntityById: function(id) {
 			return this.entities[id];
+		},
+
+		addScene: function(scene) {
+			this.scenes.push(scene);
 		}
+
 	}
 
 	Game.prototype.constructor = Game;

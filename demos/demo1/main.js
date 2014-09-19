@@ -1,4 +1,4 @@
-g = new Cortana.Game('stage', 500, 281);
+game = new Cortana.Game('stage', 500, 313);
 
 var bg = new Cortana.Entity({
 	name: 'bg',
@@ -6,7 +6,7 @@ var bg = new Cortana.Entity({
 	sprite: null,
 
 	init: function() {
-		this.sprite = new Cortana.Sprite('../images/bg.png', 500, 281, this.pos.x, this.pos.y);
+		this.sprite = new Cortana.Sprite('../images/citybg2.png', 500, 281, this.pos.x, this.pos.y);
 	},
 
 	update: function(dt) {
@@ -41,19 +41,19 @@ var player = new Cortana.Entity({
 	
 	update: function(dt) {
 
-		if (g.input.pressed.up && this.pos.y > 0) {
+		if (game.input.pressed.up && this.pos.y > 0) {
 			this.pos.y -= 5;
 		}
 
-		if (g.input.pressed.down && (this.pos.y + this.sprite.height) < Cortana.height) {
+		if (game.input.pressed.down && (this.pos.y + this.sprite.height) < Cortana.height) {
 			this.pos.y += 5;
 		}
 
-		if (g.input.pressed.left && this.pos.x > 0) {
+		if (game.input.pressed.left && this.pos.x > 0) {
 			this.pos.x -= 5;
 		}
 
-		if (g.input.pressed.right && (this.pos.x + this.sprite.width) < Cortana.width) {
+		if (game.input.pressed.right && (this.pos.x + this.sprite.width) < Cortana.width) {
 			this.pos.x += 5;
 		}
 
@@ -61,8 +61,14 @@ var player = new Cortana.Entity({
 	}
 });
 
-g.add(bg);
-g.add(coin);
-g.add(player);
+game.add(bg);
+game.add(coin);
+game.add(player);
 
-g.start();
+function update() {
+	var p = game.getEntityById(2);
+}
+
+game.addScene(update);
+
+game.start();
