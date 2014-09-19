@@ -77,7 +77,7 @@
 			this.checkEntities();
 
 			for (var s = 0, slen = this.scenes.length; s < slen; s++) {
-				this.scenes[s]();
+				this.scenes[s](dt);
 			}
 		},
 
