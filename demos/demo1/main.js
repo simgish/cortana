@@ -1,5 +1,3 @@
-game = new Cortana.Game('stage', 500, 313);
-
 var bg = new Cortana.Entity({
 	name: 'bg',
 	pos: {x: 0, y: 0},

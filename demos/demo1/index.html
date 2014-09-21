@@ -33,10 +33,12 @@
     <script src="player.js"></script>
 
 	<script>
-		// window.addEventListener('load', g.init());
+		 window.addEventListener('load', start);
 	</script>
 
 	<script>
+        game = new Cortana.Game('stage', 500, 313);
+        
 		document.getElementById('resume').addEventListener('click', function() {
 			game.isPaused = false;
 			game.reset();
