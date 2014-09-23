@@ -8,10 +8,12 @@
 		this.name = this.config.name || null;
 		this.pos = {x: this.config.pos.x, y: this.config.pos.y};
 		this.size = {width: 0, height: 0};
+        this.zIndex = this.config.zIndex || 0;
 		this.vel = this.config.vel || 0;
 		this.state = null;
 		this.dirty = false;
 		this.canCollide = this.config.canCollide || false;
+		this.collisionCheck = this.config.collisionCheck || '',
 		this.sprite = this.config.sprite;
 		this.update = this.config.update;
 		this.init = this.config.init;
@@ -39,22 +41,6 @@
 				return true
 			}
 		}
-
-		/*
-		return !(
-			this.pos.x >= other.pos.x + other.size.x ||
-			this.pos.x + this.size.x <= other.pos.x ||
-			this.pos.y >= other.pos.y + other.size.y ||
-			this.pos.y + this.size.y <= other.pos.y
-		);
-
-		public boolean collidesWith(Entity other) {
-		me.setBounds((int) x,(int) y,sprite.getWidth(),sprite.getHeight());
-		him.setBounds((int) other.x,(int) other.y,other.sprite.getWidth(),other.sprite.getHeight());
-
-		return me.intersects(him);
-		}
-		*/
 
 	}
 

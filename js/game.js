@@ -24,6 +24,7 @@
 		this.scenes = [];
 
 		this.init();
+
 		return this;
 	}
 
@@ -43,12 +44,15 @@
 			this.input = new Cortana.Input(this);
 			this.timer = new Cortana.Timer(this);
 			this.render = new Cortana.Render(this);
+			this.loader = new Cortana.Loader(this);
 
 			this.isLoaded = true;
 		},
 
 		start: function() {
-			this.timer.start();
+			if (this.isLoaded) {
+				this.timer.start();
+			}
 		},
 
 		reset: function() {
@@ -60,7 +64,7 @@
 			var canvas = document.getElementById(Cortana.canvas);
 			var context = document.getElementById(Cortana.canvas).getContext('2d');
 
-			context.save();
+			context.save();	
 
 			// Use the identity matrix while clearing the canvas
 			context.setTransform(1, 0, 0, 1, 0, 0);
@@ -70,6 +74,7 @@
 			context.restore();
 
 			// Update entities
+
 			for (var e = 0, elen = this.entities.length; e < elen; e++) {
 				this.entities[e].update();
 			}
@@ -89,6 +94,10 @@
 			var ent_id = this.entities.push(entity);
 			this.entities.indexOf(entity);
 
+			this.entities.sort(function(a, b) {
+				return a.zIndex - b.zIndex;
+			});
+
 			return this.entities.indexOf(entity);
 		},
 
@@ -104,7 +113,10 @@
 					if (!thatEntity.canCollide) continue;
 
 					if (thisEntity.touches(thatEntity)) {
-						console.log('collision');
+						if (thisEntity.name === thatEntity.collisionCheck ||
+							thisEntity.collisionCheck === thatEntity.name) {
+							console.log('collision');
+						}
 					}
 				}
 			}

@@ -1,7 +1,7 @@
 (function(Cortana) {
 	'use strict';
 
-	var Sprite = function(imgPath, width, height, posX, posY) {
+	var Sprite = function(imgPath, width, height, posX, posY, zIndex) {
 		this.image;
 		this.imgPath = imgPath;
 		this.width = width;
@@ -38,6 +38,22 @@
 				this.width,
 				this.height
 			);
+			
+		},
+
+		createCanvas: function(width, height) {
+			var canvas = document.createElement('canvas');
+			canvas.width = width;
+			canvas.height = height;
+
+			return canvas;
+		},
+
+		renderToCanvas: function(width, height, render, canvas) {
+			var canvas = canvas || this.createCanvas(width, height);
+			render(canvas.getContext('2d'));
+
+			return canvas;
 		}
 
 	}

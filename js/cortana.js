@@ -3,6 +3,10 @@ var Cortana = {
 	context: null
 };
 
+function sortEntities(a, b) {
+    return sort(a.zIndex - b.zIndex);
+}
+
 window.requestAnimationFrame = 
 			window.requestAnimationFrame ||
 			window.mozRequestAnimationFrame || 

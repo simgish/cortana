@@ -1,85 +1,32 @@
-var bg = new Cortana.Entity({
-	name: 'bg',
-	pos: {x: 0, y: 0},
-	sprite: null,
-	vel: 2,
-
-	init: function() {
-		this.sprite = new Cortana.Sprite('../images/citybg2.png', 500, 313, this.pos.x, this.pos.y);
-	},
-
-	update: function(dt) {
-		this.sprite.draw(this.pos.x, this.pos.y);
-	}
-});
-
-var bg2 = new Cortana.Entity({
-	name: 'bg2',
-	pos: {x: Cortana.width, y: 0},
-	sprite: null,
-	vel: 2,
-
-	init: function() {
-		this.sprite = new Cortana.Sprite('../images/citybg2.png', 500, 313, this.pos.x, this.pos.y);
-	},
-
-	update: function(dt) {
-		this.sprite.draw(this.pos.x, this.pos.y);
-	}
-});
-
-var starfield = new Cortana.Entity({
-	name: 'starfield',
-	pos: {x: 0, y: -250},
-	sprite: null,
-	vel: 0.5,
-
-	init: function() {
-		this.sprite = new Cortana.Sprite('../images/starfield.png', 500, 313, this.pos.x, this.pos.y);
-	},
-
-	update: function(dt) {
-		this.sprite.draw(this.pos.x, this.pos.y);
-	}
-});
-
-var starfield2 = new Cortana.Entity({
-	name: 'starfield2',
-	pos: {x: Cortana.width, y: -250},
-	sprite: null,
-	vel: 0.5,
-
-	init: function() {
-		this.sprite = new Cortana.Sprite('../images/starfield.png', 500, 313, this.pos.x, this.pos.y);
-	},
-
-	update: function(dt) {
-		this.sprite.draw(this.pos.x, this.pos.y);
-	}
-});
-
-var coin = new Cortana.Entity({
-	name: 'coin',
-	pos: {x: 0, y: 0},
-	sprite: null,
-	canCollide: true,
-
-	init: function() {
-		this.sprite = new Cortana.Sprite('../images/coin2.png', 28, 28, this.pos.x, this.pos.y);
-	},
-
-	update: function(dt) {
-		this.sprite.draw(this.pos.x, this.pos.y);
-	}
-});
-
-game.add(bg);
-game.add(bg2);
-game.add(starfield);
-game.add(starfield2);
-game.add(coin);
+game = new Cortana.Game('stage', 500, 313);
 
 var lastTime = 0;
+var coins = [];
+var maxCoins = 3;
+
+for (var c = 0; c < maxCoins; c++) {
+	var coin = new Cortana.Entity({
+		name: 'coin',
+		pos: {x: Cortana.width / 2, y: 75 * (c+1)},
+		vel: 1,
+		zIndex: 2,
+		sprite: null,
+		canCollide: true,
+		collisionCheck: 'player',
+
+		init: function() {
+			this.sprite = new Cortana.Sprite('../images/coin2.png', 28, 28, this.pos.x, this.pos.y);
+			console.log(this.pos.x);
+		},
+
+		update: function(dt) {
+			this.sprite.draw(this.pos.x, this.pos.y);
+		}
+	});
+
+	coins.push(coin);
+	game.add(coin);
+}
 
 function update(dt) {
 	var t = dt - lastTime;
@@ -108,8 +55,13 @@ function update(dt) {
 
 		lastTime = dt;
 	}
+
+    // for (var c = 0; c < maxCoins; c++) {
+    //     var coin = game.getEntityById(coins[c].id);
+    //     coin.update();
+    // }
 }
 
 game.addScene(update);
 
-game.start();
+
