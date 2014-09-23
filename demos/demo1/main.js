@@ -62,12 +62,6 @@ function update(dt) {
 
 		lastTime = dt;
 	}
-
-	var allCoins = game.getEntitiesByName('coin');
-
-	allCoins.forEach(function(coin) {
-		coin.update(dt);
-	});
 }
 
 game.addScene(update);

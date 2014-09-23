@@ -76,7 +76,7 @@
 			// Update entities
 
 			for (var e = 0, elen = this.entities.length; e < elen; e++) {
-				this.entities[e].update();
+				this.entities[e].update(dt);
 			}
 
 			this.checkEntities();
