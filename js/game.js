@@ -126,6 +126,18 @@
 			return this.entities[id];
 		},
 
+		getEntitiesByName: function(name) {
+			var found = [];
+
+			for (var e in this.entities) {
+				if (this.entities[e].name === name) {
+					found.push(this.entities[e]);
+				}
+			}
+
+			return found;
+		},
+
 		addScene: function(scene) {
 			this.scenes.push(scene);
 		}

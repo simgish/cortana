@@ -17,6 +17,7 @@
 		this.sprite = this.config.sprite;
 		this.update = this.config.update;
 		this.init = this.config.init;
+		this.lastTime = this.config.lastTime || 0;
 
 		this.init();
 	};

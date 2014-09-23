@@ -7,19 +7,26 @@ var maxCoins = 3;
 for (var c = 0; c < maxCoins; c++) {
 	var coin = new Cortana.Entity({
 		name: 'coin',
-		pos: {x: Cortana.width / 2, y: 75 * (c+1)},
+		pos: {x: Cortana.width + 75, y: 75 * (c+1)},
 		vel: 1,
 		zIndex: 2,
 		sprite: null,
 		canCollide: true,
 		collisionCheck: 'player',
+		lastTime: 0,
 
 		init: function() {
 			this.sprite = new Cortana.Sprite('../images/coin2.png', 28, 28, this.pos.x, this.pos.y);
-			console.log(this.pos.x);
 		},
 
 		update: function(dt) {
+			var t = dt - this.lastTime;	
+
+			if (t > this.vel) {
+				this.pos.x -= this.vel;
+				this.lastTime = dt;
+			}
+
 			this.sprite.draw(this.pos.x, this.pos.y);
 		}
 	});
@@ -56,10 +63,11 @@ function update(dt) {
 		lastTime = dt;
 	}
 
-    // for (var c = 0; c < maxCoins; c++) {
-    //     var coin = game.getEntityById(coins[c].id);
-    //     coin.update();
-    // }
+	var allCoins = game.getEntitiesByName('coin');
+
+	allCoins.forEach(function(coin) {
+		coin.update(dt);
+	});
 }
 
 game.addScene(update);
