@@ -75,7 +75,10 @@
 
 			// Update entities
 
-			for (var e = 0, elen = this.entities.length; e < elen; e++) {
+			for (var e = 0; e < this.entities.length; e++) {
+				if (this.entities[e].remove) {
+					this.entities.splice(e, 1);
+				}
 				this.entities[e].update(dt);
 			}
 
@@ -113,9 +116,12 @@
 					if (!thatEntity.canCollide) continue;
 
 					if (thisEntity.touches(thatEntity)) {
-						if (thisEntity.name === thatEntity.collisionCheck ||
-							thisEntity.collisionCheck === thatEntity.name) {
-							console.log('collision');
+						if (thisEntity.name === thatEntity.collisionCheck) {
+							thatEntity.handleCollision(thisEntity);
+						}
+
+						if (thisEntity.collisionCheck === thatEntity.name) {
+							thisEntity.handleCollision(thatEntity);
 						}
 					}
 				}

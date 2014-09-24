@@ -29,6 +29,10 @@ var player = new Cortana.Entity({
 		}
 
 		this.sprite.draw(this.pos.x, this.pos.y);
+	},
+
+	handleCollision: function(other) {
+		other.destroy(this);		
 	}
 });
 

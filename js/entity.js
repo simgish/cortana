@@ -12,12 +12,22 @@
 		this.vel = this.config.vel || 0;
 		this.state = null;
 		this.dirty = false;
+		this.remove = false;
 		this.canCollide = this.config.canCollide || false;
 		this.collisionCheck = this.config.collisionCheck || '',
 		this.sprite = this.config.sprite;
 		this.update = this.config.update;
-		this.init = this.config.init;
 		this.lastTime = this.config.lastTime || 0;
+
+		if (this.config.handleCollision) {
+			this.handleCollision = this.config.handleCollision;
+		}
+
+		if (this.config.destroy) {
+			this.destroy = this.config.destroy;
+		}
+
+		this.init = this.config.init;
 
 		this.init();
 	};
@@ -39,8 +49,15 @@
 
 				return false;
 			} else {
-				return true
+				return true;
 			}
+		},
+
+		handleCollision: function(other) {
+		},
+
+		destroy: function(other) {
+			this.remove = true;
 		}
 
 	}
