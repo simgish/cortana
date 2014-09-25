@@ -7,8 +7,8 @@ var maxCoins = 3;
 for (var c = 0; c < maxCoins; c++) {
 	var coin = new Cortana.Entity({
 		name: 'coin',
-		pos: {x: Cortana.width + 75, y: 75 * (c+1)},
-		vel: 1,
+		pos: {x: Cortana.width + random(50, 200), y: 75 * (c+1)},
+		vel: random(1, 3),
 		zIndex: 2,
 		sprite: null,
 		canCollide: true,

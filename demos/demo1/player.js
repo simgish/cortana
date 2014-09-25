@@ -32,7 +32,7 @@ var player = new Cortana.Entity({
 	},
 
 	handleCollision: function(other) {
-		other.destroy(this);		
+		other.destroy(this);
 	}
 });
 

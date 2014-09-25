@@ -3,6 +3,10 @@ var Cortana = {
 	context: null
 };
 
+function random(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
 function sortEntities(a, b) {
     return sort(a.zIndex - b.zIndex);
 }
