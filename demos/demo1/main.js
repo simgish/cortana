@@ -27,6 +27,11 @@ for (var c = 0; c < maxCoins; c++) {
 				this.lastTime = dt;
 			}
 
+			if (this.pos.x < 0 - this.sprite.width / 2) {
+				console.log('destroy');
+				this.destroy();
+			}
+
 			this.sprite.draw(this.pos.x, this.pos.y);
 		}
 	});
