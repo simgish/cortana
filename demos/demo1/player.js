@@ -5,6 +5,7 @@ var player = new Cortana.Entity({
 	sprite: null,
 	canCollide: true,
 	collisionCheck: 'coin',
+	// score: 0,
 	
 	init: function() {
 		this.sprite = new Cortana.Sprite('../images/ship.png', 32, 32, this.pos.x, this.pos.y, this.zindex);
@@ -32,8 +33,9 @@ var player = new Cortana.Entity({
 	},
 
 	handleCollision: function(other) {
-		other.destroy(this);
+		// other.destroy(this);
 	}
 });
 
+player.score = 0;
 game.add(player);

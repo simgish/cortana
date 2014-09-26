@@ -4,7 +4,8 @@ var Cortana = {
 };
 
 function random(min, max) {
-	return Math.random() * (max - min) + min;
+	// return Math.random() * (max - min) + min;
+	return min + (max - min) * Math.random()
 }
 
 function sortEntities(a, b) {

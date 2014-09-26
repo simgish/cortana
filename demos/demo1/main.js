@@ -3,12 +3,15 @@ game = new Cortana.Game('stage', 500, 313);
 var lastTime = 0;
 var coins = [];
 var maxCoins = 3;
+var meteors = [];
+var maxMeteors = 6;
+var score = 0;
 
 for (var c = 0; c < maxCoins; c++) {
 	var coin = new Cortana.Entity({
 		name: 'coin',
-		pos: {x: Cortana.width + random(50, 200), y: 75 * (c+1)},
-		vel: random(1, 3),
+		pos: {x: Cortana.width + random(28, Cortana.width), y: random(28, Cortana.height - 28)},
+		vel: random(0.75, 1.5),
 		zIndex: 2,
 		sprite: null,
 		canCollide: true,
@@ -27,17 +30,69 @@ for (var c = 0; c < maxCoins; c++) {
 				this.lastTime = dt;
 			}
 
-			if (this.pos.x < 0 - this.sprite.width / 2) {
-				console.log('destroy');
-				this.destroy();
+			if (this.pos.x < 0 - this.sprite.width) {
+				var newVel = random(0.75, 1.5);
+				this.pos = {x: Cortana.width + random(28, Cortana.width + (random(28, this.pos.x)*newVel)), y: random(28, Cortana.height - 28)};
+				this.vel = newVel;
+
+				// this.destroy();
 			}
 
 			this.sprite.draw(this.pos.x, this.pos.y);
+
+		},
+
+		handleCollision: function(other) {
+			player.score += 1;
+			var newVel = random(0.75, 1.5);
+			this.pos = {x: Cortana.width + random(28, Cortana.width + (random(1, this.pos.x)*newVel)), y: random(28, Cortana.height - 28)};
+			this.vel = newVel;
 		}
 	});
 
-	coins.push(coin);
-	game.add(coin);
+coins.push(coin);
+game.add(coin);
+}
+
+for (var c = 0; c < maxMeteors; c++) {
+	var meteor = new Cortana.Entity({
+		name: 'meteor',
+		pos: {x: Cortana.width + random(40, Cortana.width + (c*300)), y: random(-65, Cortana.height + 65)},
+		vel: random(1.0, 2.5),
+		zIndex: 2,
+		sprite: null,
+		canCollide: true,
+		collisionCheck: '',
+		lastTime: 0,
+
+		init: function() {
+			this.sprite = new Cortana.Sprite('../images/meteorBig.png', 136, 111, this.pos.x, this.pos.y);
+		},
+
+		update: function(dt) {
+			var t = dt - this.lastTime;	
+
+			if (t > this.vel) {
+				this.pos.x -= this.vel;
+				this.lastTime = dt;
+			}
+
+			if (this.pos.x < 0 - this.sprite.width) {
+				player.score -= 1;
+				var newVel = random(1.0, 2.5);
+				this.pos = {x: Cortana.width + random(136, Cortana.width + (random(15, 65)*newVel+1)), y: random(-65, Cortana.height + 65)};
+				this.vel = newVel;
+
+				// this.destroy();
+			}
+
+			this.sprite.draw(this.pos.x, this.pos.y);
+
+		}
+	});
+
+	meteors.push(meteor);
+	game.add(meteor);
 }
 
 function update(dt) {
@@ -67,6 +122,8 @@ function update(dt) {
 
 		lastTime = dt;
 	}
+
+	// console.log(player.score);
 }
 
 game.addScene(update);
