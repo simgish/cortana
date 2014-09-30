@@ -21,29 +21,33 @@
 
 	<canvas id="stage">canvas</canvas>
 
-	<script src="js/cortana.js"></script>
-	<script src="js/timer.js"></script>
-	<script src="js/sprite.js"></script>
-	<script src="js/entity.js"></script>
-	<script src="js/entityManager.js"></script>
-	<script src="js/input.js"></script>
-	<script src="js/render.js"></script>
-	<script src="js/game.js"></script>
-	<script src="example.js"></script>
+	<script src="/js/cortana.js"></script>
+	<script src="/js/timer.js"></script>
+	<script src="/js/sprite.js"></script>
+	<script src="/js/entity.js"></script>
+	<script src="/js/entityManager.js"></script>
+	<script src="/js/input.js"></script>
+	<script src="/js/render.js"></script>
+	<script src="/js/loader.js"></script>
+	<script src="/js/game.js"></script>
+	<script src="main.js"></script>
+	<script src="background.js"></script>
+    <script src="coin.js"></script>
+    <script src="player.js"></script>
 
 	<script>
-		// window.addEventListener('load', g.init());
+		 window.addEventListener('load', game.start());
 	</script>
 
-	<script>
+	<script>         
 		document.getElementById('resume').addEventListener('click', function() {
-			g.isPaused = false;
-			g.reset();
+			game.isPaused = false;
+			game.reset();
 		});
 
 		document.getElementById('pause').addEventListener('click', function() {
-			g.isPaused = true;
-			g.reset();
+			game.isPaused = true;
+			game.reset();
 		});
 
 	</script>
