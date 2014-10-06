@@ -1,7 +1,7 @@
 (function(Cortana) {
 	'use strict';
 
-	Cortana.KEY = {
+	var keys = {
 		38: 'up',
 		40: 'down',
 		37: 'left',
@@ -10,6 +10,7 @@
 	};
 
 	var Input = function(game) {
+
 		this.pressed = {
 			up: false,
 			down: false,
@@ -29,9 +30,9 @@
 		},
 
 		handler: function(event) {
-			if (Cortana.KEY.hasOwnProperty(event.keyCode)) {
+			if (keys.hasOwnProperty(event.keyCode)) {
 				var down = event.type == 'keydown';
-				this.pressed[Cortana.KEY[event.keyCode]] = down;
+				this.pressed[keys[event.keyCode]] = down;
 				event.preventDefault();
 			}
 		}
