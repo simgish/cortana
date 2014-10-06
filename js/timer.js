@@ -34,7 +34,7 @@
 			this.reset();
 		},
 
-		reset: function() {	
+		reset: function() {
 		},
 
 		update: function(dt) {
