@@ -90,7 +90,6 @@
 		},
 
 		add: function(entity) {
-			// var entity = new Cortana.Entity(e);
 			var next_index  = this.entities.length + 1;
 			entity.id = next_index;
 
