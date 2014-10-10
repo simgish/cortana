@@ -6,7 +6,11 @@
 		40: 'down',
 		37: 'left',
 		39: 'right',
-		32: 'space'
+		32: 'space',
+		65: 'a',
+		90: 'z',
+		222: 'quote',
+		191: 'question'
 	};
 
 	var Input = function(game) {

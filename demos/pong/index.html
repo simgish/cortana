@@ -31,22 +31,22 @@
 	<script src="/js/loader.js"></script>
 	<script src="/js/game.js"></script>
 	<script src="main.js"></script>
+	<script src="field.js"></script>
 
 	<script>
 		 window.addEventListener('load', game.start());
 	</script>
 
-	<script>         
-		document.getElementById('resume').addEventListener('click', function() {
-			game.isPaused = false;
-			game.reset();
-		});
-
+	<script>       
 		document.getElementById('pause').addEventListener('click', function() {
 			game.isPaused = true;
 			game.reset();
 		});
 
+		document.getElementById('resume').addEventListener('click', function() {
+			game.isPaused = false;
+			game.reset();
+		});
 	</script>
 
 </body>
