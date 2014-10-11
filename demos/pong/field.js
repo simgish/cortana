@@ -5,7 +5,7 @@ var field = new Cortana.Entity({
 	vel: 0,
 
 	init: function() {
-		this.sprite = new Cortana.Sprite('images/field.png', 800, 600, this.pos.x, this.pos.y);
+		this.sprite = new Cortana.Sprite('images/field-brown.png', 800, 600, this.pos.x, this.pos.y);
 	},
 
 	update: function(dt) {

@@ -1,4 +1,4 @@
-(function(Cortana) {
+ (function(Cortana) {
 	'use strict';
 
 	var Sprite = function(imgPath, width, height, posX, posY, zIndex) {

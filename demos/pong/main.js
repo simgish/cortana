@@ -16,7 +16,7 @@ player1 = new Cortana.Entity({
 	vel: 10,
 	
 	init: function() {
-		this.sprite = new Cortana.Sprite('images/paddle.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
+		this.sprite = new Cortana.Sprite('images/paddle-green.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
 	},
 	
 	update: function(dt) {
@@ -48,7 +48,7 @@ player2 = new Cortana.Entity({
 	vel: 10,
 	
 	init: function() {
-		this.sprite = new Cortana.Sprite('images/paddle.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
+		this.sprite = new Cortana.Sprite('images/paddle-green.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
 	},
 	
 	update: function(dt) {
@@ -81,7 +81,7 @@ ball = new Cortana.Entity({
 	goingLeft: true,
 	
 	init: function() {
-		this.sprite = new Cortana.Sprite('images/ball.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
+		this.sprite = new Cortana.Sprite('images/ball.png', 24, 24, this.pos.x, this.pos.y, this.zindex);
 	},
 	
 	update: function(dt) {
