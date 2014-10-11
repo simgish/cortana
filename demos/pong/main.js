@@ -2,7 +2,8 @@ game = new Cortana.Game('stage', 800, 600);
 
 var lastTime = 0,
 	player1,
-	player2;
+	player2,
+	ball;
 
 player1 = new Cortana.Entity({
 	name: 'player',
@@ -10,7 +11,7 @@ player1 = new Cortana.Entity({
     zIndex: 9999, 
 	sprite: null,
 	canCollide: true,
-	collisionCheck: 'coin',
+	collisionCheck: 'ball',
 	score: 0,
 	vel: 10,
 	
@@ -32,7 +33,7 @@ player1 = new Cortana.Entity({
 	},
 
 	handleCollision: function(other) {
-		// other.destroy(this);
+
 	}
 });
 
@@ -42,7 +43,7 @@ player2 = new Cortana.Entity({
     zIndex: 9999, 
 	sprite: null,
 	canCollide: true,
-	collisionCheck: 'coin',
+	collisionCheck: 'ball',
 	score: 0,
 	vel: 10,
 	
@@ -64,12 +65,52 @@ player2 = new Cortana.Entity({
 	},
 
 	handleCollision: function(other) {
-		// other.destroy(this);
+
 	}
 });
 
+ball = new Cortana.Entity({
+	name: 'player',
+	pos: {x: Cortana.width / 2 - 12, y: Cortana.height / 2},
+    zIndex: 9999, 
+	sprite: null,
+	canCollide: true,
+	collisionCheck: 'player',
+	score: 0,
+	vel: 10,
+	goingLeft: true,
+	
+	init: function() {
+		this.sprite = new Cortana.Sprite('images/ball.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
+	},
+	
+	update: function(dt) {
+
+		if (this.goingLeft) {
+			this.pos.x -= this.vel;
+		} else {
+			this.pos.x += this.vel;
+		}
+
+		this.sprite.draw(this.pos.x, this.pos.y);
+	},
+
+	handleCollision: function(other) {
+		if (this.goingLeft) {
+			this.goingLeft = false;
+			this.vel = 10;
+		} else {
+			this.goingLeft = true;
+			this.vel = 10;
+		}
+
+	}
+});
+
+
 game.add(player1);
 game.add(player2);
+game.add(ball);
 
 function update(dt) {
 	var t = dt - lastTime;
