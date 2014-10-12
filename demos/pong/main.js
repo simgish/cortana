@@ -48,7 +48,7 @@ player2 = new Cortana.Entity({
 	vel: 10,
 	
 	init: function() {
-		this.sprite = new Cortana.Sprite('images/paddle-green.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
+		this.sprite = new Cortana.Sprite('images/paddle-orange.png', 24, 104, this.pos.x, this.pos.y, this.zindex);
 	},
 	
 	update: function(dt) {
@@ -77,7 +77,10 @@ ball = new Cortana.Entity({
 	canCollide: true,
 	collisionCheck: 'player',
 	score: 0,
+	xVel: 10,
+	yVel: 10,
 	vel: 10,
+	defaultVel: 10,
 	goingLeft: true,
 	
 	init: function() {
@@ -92,16 +95,19 @@ ball = new Cortana.Entity({
 			this.pos.x += this.vel;
 		}
 
+		// this.pos.x += this.xVel;
+		// this.pos.y += this.yVel;
+
 		this.sprite.draw(this.pos.x, this.pos.y);
 	},
 
 	handleCollision: function(other) {
 		if (this.goingLeft) {
 			this.goingLeft = false;
-			this.vel = 10;
+			this.vel = defaultVel;
 		} else {
 			this.goingLeft = true;
-			this.vel = 10;
+			this.vel = defaultVel;
 		}
 
 	}
