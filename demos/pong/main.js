@@ -104,10 +104,10 @@ ball = new Cortana.Entity({
 	handleCollision: function(other) {
 		if (this.goingLeft) {
 			this.goingLeft = false;
-			this.vel = defaultVel;
+			this.vel = 10;
 		} else {
 			this.goingLeft = true;
-			this.vel = defaultVel;
+			this.vel = 10;
 		}
 
 	}
