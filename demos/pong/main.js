@@ -7,7 +7,7 @@ var lastTime = 0,
 
 player1 = new Cortana.Entity({
 	name: 'player',
-	pos: {x: 16, y: Cortana.height / 2 - 130},
+	pos: {x: 16, y: Cortana.height / 2 - 40},
     zIndex: 9999, 
 	sprite: null,
 	canCollide: true,
@@ -39,7 +39,7 @@ player1 = new Cortana.Entity({
 
 player2 = new Cortana.Entity({
 	name: 'player',
-	pos: {x: Cortana.width - 40, y: Cortana.height / 2 - 130},
+	pos: {x: Cortana.width - 40, y: Cortana.height / 2 - 40},
     zIndex: 9999, 
 	sprite: null,
 	canCollide: true,
