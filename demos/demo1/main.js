@@ -82,8 +82,6 @@ for (var c = 0; c < maxMeteors; c++) {
 				var newVel = random(1.0, 2.5);
 				this.pos = {x: Cortana.width + random(136, Cortana.width + (random(15, 65)*newVel+1)), y: random(-65, Cortana.height + 65)};
 				this.vel = newVel;
-
-				// this.destroy();
 			}
 
 			this.sprite.draw(this.pos.x, this.pos.y);
@@ -122,8 +120,6 @@ function update(dt) {
 
 		lastTime = dt;
 	}
-
-	// console.log(player.score);
 }
 
 game.addScene(update);

@@ -74,7 +74,6 @@
 			context.restore();
 
 			// Update entities
-
 			for (var e = 0; e < this.entities.length; e++) {
 				if (this.entities[e].remove) {
 					this.entities.splice(e, 1);
